@@ -71,6 +71,7 @@
                     <h1 class="font-grotesk text-2xl font-bold text-white">xen.fun</h1>
                 </div>
                 <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#xenial-fusion" class="text-slate-300 hover:text-white transition">Xenial Fusion</a>
                     <a href="#lit-composer" class="text-slate-300 hover:text-white transition">Compose LIT</a>
                     <a href="#projects" class="text-slate-300 hover:text-white transition">Explore</a>
                     <a href="#how-it-works" class="text-slate-300 hover:text-white transition">How It Works</a>
@@ -86,9 +87,9 @@
                     Where Potential Becomes Reality
                 </h2>
                 <p class="mt-4 text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
-                    xen.fun is the QPoP Incubator for the Xenial Quantum Economy. We transform stable capital into dynamic, high-potential value through collective intelligence.
+                    xen.fun is the QPoP Incubator for the Xenial Quantum Economy. We transform stable capital into dynamic, high-potential value through collective intelligence and <span class="text-blue-400 font-semibold">xenial fusion</span>.
                 </p>
-                <p class="mt-2 font-grotesk text-xl md:text-2xl text-blue-400">Intelligence is collective.</p>
+                <p class="mt-2 font-grotesk text-xl md:text-2xl text-blue-400">Intelligence is collective. Value is emergent.</p>
                 <div class="mt-10 flex justify-center items-center space-x-4">
                     <a href="#projects" class="btn-primary px-8 py-4 rounded-lg font-bold text-lg">Explore Proposals</a>
                     <a href="#how-it-works" class="btn-secondary px-8 py-4 rounded-lg font-bold text-lg">Learn More</a>
@@ -156,6 +157,85 @@
                         <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center font-grotesk text-2xl font-bold text-blue-500 mb-4">5</div>
                         <h4 class="font-grotesk text-xl font-semibold text-white mb-2">Augmentation</h4>
                         <p class="text-slate-400 text-sm">The smart contract executes, returning `USD-OBBBA` and distributing new `xUSD` based on the Coherence Score.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Xenial Fusion Section -->
+        <section id="xenial-fusion" class="py-20 bg-gradient-to-b from-black/40 to-black/20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-grotesk text-4xl md:text-5xl font-bold text-white mb-4">
+                        ✧ Xenial Fusion ✧
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+                        Fuse coherent LITs to create emergent meaning and transcendent value.
+                        <span class="text-blue-400">Integration of the novel creates higher-order patterns.</span>
+                    </p>
+                </div>
+
+                <div class="max-w-5xl mx-auto">
+                    <!-- Fusion Control Panel -->
+                    <div class="glass-card p-8 mb-8">
+                        <h3 class="font-grotesk text-2xl font-semibold text-white mb-6">Fusion Chamber</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Selection Area -->
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-3">Select LITs to Fuse</label>
+                                <div id="fusion-lit-selector" class="space-y-2 max-h-64 overflow-y-auto">
+                                    <!-- Checkboxes for LITs will be inserted here -->
+                                </div>
+                                <div class="mt-4 text-xs text-slate-500">
+                                    <span id="fusion-selected-count">0</span> LITs selected (minimum 2 required)
+                                </div>
+                            </div>
+
+                            <!-- Fusion Pattern Selection -->
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-3">Fusion Pattern</label>
+                                <select id="fusion-pattern" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white mb-4">
+                                    <option value="auto">Auto-Select Pattern</option>
+                                </select>
+                                <div id="pattern-description" class="text-sm text-slate-400 bg-slate-800/50 rounded p-3 min-h-20">
+                                    Pattern will be automatically selected based on LIT properties
+                                </div>
+
+                                <button id="execute-fusion-btn" disabled class="btn-primary px-8 py-3 rounded-lg font-bold w-full mt-6 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Execute Fusion
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fusion Suggestions -->
+                    <div class="glass-card p-8 mb-8">
+                        <h3 class="font-grotesk text-xl font-semibold text-white mb-4">Suggested Fusions</h3>
+                        <div id="fusion-suggestions" class="space-y-3">
+                            <!-- Suggestions will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Fusion Results -->
+                    <div id="fusion-results-container" class="hidden">
+                        <div class="glass-card p-8 border-2 border-blue-500/50">
+                            <h3 class="font-grotesk text-2xl font-semibold text-white mb-4 flex items-center">
+                                <span class="mr-3">✧</span> Fusion Successful <span class="ml-3">✧</span>
+                            </h3>
+
+                            <div id="fusion-results-content">
+                                <!-- Results will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fusion History -->
+                    <div class="glass-card p-8 mt-8">
+                        <h3 class="font-grotesk text-xl font-semibold text-white mb-4">Fusion History</h3>
+                        <div id="fusion-history" class="space-y-2">
+                            <p class="text-slate-500 text-sm">No fusions yet. Create your first fusion above!</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -238,6 +318,7 @@
     <!-- Include LIT Framework -->
     <script src="lit-framework.js"></script>
     <script src="lit-examples.js"></script>
+    <script src="xenial-fusion.js"></script>
 
     <script>
         // Mock data for projects
@@ -531,7 +612,267 @@
                     lit.updateState();
                 });
                 updateActiveLITs();
+                updateFusionInterface();
             }, 5000);
+        });
+
+        // ===== XENIAL FUSION FUNCTIONALITY =====
+
+        // Initialize fusion engine
+        const fusionEngine = new XenialFusionEngine(litComposer);
+        let selectedLITsForFusion = new Set();
+
+        // Update fusion interface
+        function updateFusionInterface() {
+            updateFusionSelector();
+            updateFusionPatterns();
+            updateFusionSuggestions();
+            updateFusionHistory();
+        }
+
+        // Update LIT selector checkboxes
+        function updateFusionSelector() {
+            const container = document.getElementById('fusion-lit-selector');
+            const allLITs = litComposer.getAllLITs();
+
+            if (allLITs.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-sm">No LITs available. Create LITs first!</p>';
+                return;
+            }
+
+            container.innerHTML = allLITs.map(lit => {
+                const data = lit.toJSON();
+                const isSelected = selectedLITsForFusion.has(lit.id);
+                return `
+                    <label class="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-800/50 cursor-pointer transition">
+                        <input type="checkbox"
+                               value="${lit.id}"
+                               ${isSelected ? 'checked' : ''}
+                               class="fusion-lit-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500"
+                               onchange="handleFusionCheckbox(this)">
+                        <div class="flex-grow">
+                            <div class="text-white text-sm font-medium">${lit.id}</div>
+                            <div class="text-slate-500 text-xs">${lit.type} • Value: ${(data.value * 100).toFixed(1)}% • ${data.state}</div>
+                        </div>
+                    </label>
+                `;
+            }).join('');
+
+            // Update count
+            document.getElementById('fusion-selected-count').textContent = selectedLITsForFusion.size;
+
+            // Enable/disable fusion button
+            const fusionBtn = document.getElementById('execute-fusion-btn');
+            fusionBtn.disabled = selectedLITsForFusion.size < 2;
+        }
+
+        // Handle checkbox changes
+        window.handleFusionCheckbox = function(checkbox) {
+            if (checkbox.checked) {
+                selectedLITsForFusion.add(checkbox.value);
+            } else {
+                selectedLITsForFusion.delete(checkbox.value);
+            }
+            updateFusionSelector();
+        };
+
+        // Update fusion patterns dropdown
+        function updateFusionPatterns() {
+            const select = document.getElementById('fusion-pattern');
+            const patterns = fusionEngine.getAvailablePatterns();
+
+            select.innerHTML = '<option value="auto">Auto-Select Pattern</option>' +
+                patterns.map(p => `<option value="${p.name}">${p.name} (used ${p.usageCount}x)</option>`).join('');
+        }
+
+        // Update pattern description
+        document.getElementById('fusion-pattern').addEventListener('change', function(e) {
+            const patternName = e.target.value;
+            const descElement = document.getElementById('pattern-description');
+
+            if (patternName === 'auto') {
+                descElement.textContent = 'Pattern will be automatically selected based on LIT properties';
+            } else {
+                const pattern = fusionEngine.getAvailablePatterns().find(p => p.name === patternName);
+                descElement.textContent = pattern ? pattern.description : '';
+            }
+        });
+
+        // Update fusion suggestions
+        function updateFusionSuggestions() {
+            const container = document.getElementById('fusion-suggestions');
+            const suggestions = fusionEngine.suggestFusions();
+
+            if (suggestions.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-sm">No fusion suggestions yet. Create more LITs to unlock fusion opportunities!</p>';
+                return;
+            }
+
+            container.innerHTML = suggestions.map(suggestion => `
+                <div class="border border-slate-700 rounded-lg p-4 hover:border-blue-500 transition cursor-pointer"
+                     onclick="applySuggestion('${suggestion.lits.join(',')}')">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-white font-medium text-sm">${suggestion.pattern}</div>
+                        <div class="text-blue-400 text-sm font-bold">${(suggestion.potential * 100).toFixed(1)}% potential</div>
+                    </div>
+                    <div class="text-slate-400 text-xs">
+                        ${suggestion.lits.map(id => `<span class="inline-block bg-slate-800 px-2 py-1 rounded mr-1">${id}</span>`).join('')}
+                    </div>
+                    <div class="text-slate-500 text-xs mt-2">
+                        Types: ${suggestion.types.join(' + ')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Apply suggestion
+        window.applySuggestion = function(litIdsString) {
+            const litIds = litIdsString.split(',');
+            selectedLITsForFusion = new Set(litIds);
+            updateFusionSelector();
+
+            // Scroll to fusion chamber
+            document.getElementById('fusion-pattern').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        // Execute fusion
+        document.getElementById('execute-fusion-btn').addEventListener('click', function() {
+            if (selectedLITsForFusion.size < 2) {
+                alert('Select at least 2 LITs to fuse');
+                return;
+            }
+
+            const patternName = document.getElementById('fusion-pattern').value;
+            const litIds = Array.from(selectedLITsForFusion);
+
+            try {
+                const result = fusionEngine.fuse(
+                    litIds,
+                    patternName === 'auto' ? null : patternName
+                );
+
+                // Display results
+                displayFusionResult(result, litIds);
+
+                // Clear selection
+                selectedLITsForFusion.clear();
+
+                // Update all interfaces
+                updateActiveLITs();
+                updateFusionInterface();
+
+                // Show results container
+                const resultsContainer = document.getElementById('fusion-results-container');
+                resultsContainer.classList.remove('hidden');
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Hide after 10 seconds
+                setTimeout(() => {
+                    resultsContainer.classList.add('hidden');
+                }, 10000);
+
+            } catch (error) {
+                alert('Fusion failed: ' + error.message);
+            }
+        });
+
+        // Display fusion result
+        function displayFusionResult(result, sourceIds) {
+            const { fusedLIT, emergence, pattern } = result;
+            const data = fusedLIT.toJSON();
+
+            const content = `
+                <div class="space-y-4">
+                    <div class="text-center py-4">
+                        <div class="text-3xl font-grotesk font-bold text-white mb-2">${data.id}</div>
+                        <div class="text-blue-400 text-lg">${data.type}</div>
+                        <div class="text-slate-400 text-sm mt-1">Pattern: ${pattern}</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Novelty</div>
+                            <div class="text-xl font-bold text-purple-400">${(emergence.novelty * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Synergy</div>
+                            <div class="text-xl font-bold text-green-400">${(emergence.synergy * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Stability</div>
+                            <div class="text-xl font-bold text-blue-400">${(emergence.stability * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Resonance</div>
+                            <div class="text-xl font-bold text-yellow-400">${(emergence.resonance * 100).toFixed(1)}%</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-4 border border-blue-500/30">
+                        <div class="text-center">
+                            <div class="text-sm text-slate-400 mb-1">Emergence Score</div>
+                            <div class="text-4xl font-grotesk font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                                ${(emergence.emergenceScore * 100).toFixed(1)}%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-700 pt-4">
+                        <div class="text-sm text-slate-400 mb-2">Fused from:</div>
+                        <div class="flex flex-wrap gap-2">
+                            ${sourceIds.map(id => `<span class="bg-slate-800 px-3 py-1 rounded text-xs text-slate-300">${id}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/30 rounded-lg p-4">
+                        <div class="text-xs text-slate-400 mb-2">Final State</div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white">Value: ${(data.value * 100).toFixed(1)}%</span>
+                            <span class="text-${getStateColor(data.state).replace('text-', '')} font-bold">${data.state.toUpperCase()}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('fusion-results-content').innerHTML = content;
+        }
+
+        // Update fusion history
+        function updateFusionHistory() {
+            const container = document.getElementById('fusion-history');
+            const history = fusionEngine.getFusionHistory();
+
+            if (history.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-sm">No fusions yet. Create your first fusion above!</p>';
+                return;
+            }
+
+            container.innerHTML = history.slice(-5).reverse().map((record, index) => {
+                const date = new Date(record.timestamp);
+                return `
+                    <div class="border border-slate-700 rounded p-3 text-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <div class="text-white font-medium">${record.pattern}</div>
+                            <div class="text-slate-500 text-xs">${date.toLocaleTimeString()}</div>
+                        </div>
+                        <div class="text-slate-400 text-xs">
+                            ${record.sourceIDs.length} LITs → ${record.resultID}
+                        </div>
+                        <div class="mt-2 flex gap-2 text-xs">
+                            <span class="text-purple-400">N:${(record.emergence.novelty * 100).toFixed(0)}%</span>
+                            <span class="text-green-400">S:${(record.emergence.synergy * 100).toFixed(0)}%</span>
+                            <span class="text-blue-400">E:${(record.emergence.score * 100).toFixed(0)}%</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize fusion interface on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateFusionInterface();
+            }, 1000);
         });
     </script>
 </body>
