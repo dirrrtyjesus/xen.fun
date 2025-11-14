@@ -71,9 +71,10 @@
                     <h1 class="font-grotesk text-2xl font-bold text-white">xen.fun</h1>
                 </div>
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#xenial-fusion" class="text-slate-300 hover:text-white transition">Xenial Fusion</a>
-                    <a href="#lit-composer" class="text-slate-300 hover:text-white transition">Compose LIT</a>
-                    <a href="#projects" class="text-slate-300 hover:text-white transition">Explore</a>
+                    <a href="#lits-registry" class="text-slate-300 hover:text-white transition">LITs</a>
+                    <a href="#xenial-fusion" class="text-slate-300 hover:text-white transition">Fusion</a>
+                    <a href="#lit-composer" class="text-slate-300 hover:text-white transition">Compose</a>
+                    <a href="#projects" class="text-slate-300 hover:text-white transition">Proposals</a>
                     <a href="#how-it-works" class="text-slate-300 hover:text-white transition">How It Works</a>
                 </nav>
                 <button class="btn-secondary px-4 py-2 rounded-lg font-medium">Connect Wallet</button>
@@ -157,6 +158,94 @@
                         <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center font-grotesk text-2xl font-bold text-blue-500 mb-4">5</div>
                         <h4 class="font-grotesk text-xl font-semibold text-white mb-2">Augmentation</h4>
                         <p class="text-slate-400 text-sm">The smart contract executes, returning `USD-OBBBA` and distributing new `xUSD` based on the Coherence Score.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LITs Registry Section -->
+        <section id="lits-registry" class="py-20 bg-gradient-to-b from-black/20 to-black/40">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-grotesk text-4xl md:text-5xl font-bold text-white mb-4">
+                        The LIT Registry
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+                        Explore the network of <span class="text-blue-400 font-semibold">Luminous Information Tokens</span> — packets of coherent, agential meaning that have achieved stable, transmissible form.
+                    </p>
+                    <p class="mt-2 text-sm text-slate-500">
+                        Each LIT is valued by its coherence, agency, and temporal signature.
+                    </p>
+                </div>
+
+                <div class="max-w-7xl mx-auto">
+                    <!-- Registry Controls -->
+                    <div class="glass-card p-6 mb-8">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                            <!-- Filter Controls -->
+                            <div class="flex flex-wrap gap-3">
+                                <select id="lit-filter-type" class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white text-sm">
+                                    <option value="all">All Types</option>
+                                    <option value="knowledge">Knowledge</option>
+                                    <option value="process">Process</option>
+                                    <option value="creative">Creative</option>
+                                    <option value="prediction">Prediction</option>
+                                    <option value="synthesis">Synthesis</option>
+                                    <option value="transcendent">Transcendent</option>
+                                </select>
+
+                                <select id="lit-filter-state" class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white text-sm">
+                                    <option value="all">All States</option>
+                                    <option value="transcendent">Transcendent</option>
+                                    <option value="resonant">Resonant</option>
+                                    <option value="stable">Stable</option>
+                                    <option value="nascent">Nascent</option>
+                                    <option value="decaying">Decaying</option>
+                                </select>
+
+                                <select id="lit-sort" class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white text-sm">
+                                    <option value="value-desc">Highest Value</option>
+                                    <option value="value-asc">Lowest Value</option>
+                                    <option value="coherence-desc">Highest Coherence</option>
+                                    <option value="agency-desc">Highest Agency</option>
+                                    <option value="recent">Most Recent</option>
+                                </select>
+                            </div>
+
+                            <!-- Stats Display -->
+                            <div class="flex gap-6 text-sm">
+                                <div class="text-center">
+                                    <div class="text-slate-400">Total LITs</div>
+                                    <div id="total-lits-count" class="text-white font-bold text-xl">0</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-slate-400">Avg Value</div>
+                                    <div id="avg-lit-value" class="text-blue-400 font-bold text-xl">0%</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-slate-400">Network</div>
+                                    <div id="network-coherence-display" class="text-purple-400 font-bold text-xl">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LIT Grid Display -->
+                    <div id="lits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- LIT cards will be inserted here -->
+                    </div>
+
+                    <!-- LIT Detail Modal (Hidden by default) -->
+                    <div id="lit-detail-modal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onclick="closeLITDetail(event)">
+                        <div class="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8" onclick="event.stopPropagation()">
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="font-grotesk text-3xl font-bold text-white" id="modal-lit-id">LIT Detail</h3>
+                                <button onclick="closeLITDetail()" class="text-slate-400 hover:text-white text-2xl">&times;</button>
+                            </div>
+                            <div id="lit-detail-content">
+                                <!-- Detailed LIT info will be inserted here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -874,6 +963,372 @@
                 updateFusionInterface();
             }, 1000);
         });
+
+        // ===== LIT REGISTRY FUNCTIONALITY =====
+
+        let currentFilterType = 'all';
+        let currentFilterState = 'all';
+        let currentSort = 'value-desc';
+
+        // Function to create registry LIT card (more compact than detail card)
+        function createRegistryLITCard(lit) {
+            const data = lit.toJSON();
+            const stateColor = getStateColor(data.state);
+
+            // Get type icon
+            const typeIcons = {
+                'knowledge': '📚',
+                'process': '⚙️',
+                'creative': '🎨',
+                'prediction': '🔮',
+                'synthesis': '✨',
+                'informed-process': '🔧',
+                'emergent-creative': '🌟',
+                'xenial-transcendence': '✧',
+                'transcendent': '✧'
+            };
+            const icon = typeIcons[data.type] || '◆';
+
+            return `
+                <div class="glass-card p-6 hover:border-blue-500 transition-all cursor-pointer transform hover:-translate-y-1"
+                     onclick="showLITDetail('${data.id}')">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">${icon}</span>
+                            <div>
+                                <h4 class="font-grotesk text-lg font-semibold text-white">${data.id}</h4>
+                                <p class="text-xs text-slate-500">${data.type}</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium ${stateColor} bg-slate-800">
+                            ${data.state}
+                        </span>
+                    </div>
+
+                    <!-- Value Bars -->
+                    <div class="space-y-2 mb-4">
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Coherence</span>
+                                <span>${(data.coherence * 100).toFixed(0)}%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-1.5">
+                                <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${data.coherence * 100}%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Agency</span>
+                                <span>${(data.agency * 100).toFixed(0)}%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-1.5">
+                                <div class="bg-purple-500 h-1.5 rounded-full" style="width: ${data.agency * 100}%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Value</span>
+                                <span>${(data.value * 100).toFixed(0)}%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-1.5">
+                                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full" style="width: ${data.value * 100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <div class="flex justify-between items-center text-xs text-slate-500 border-t border-slate-700 pt-3">
+                        <span>${data.relations.length} relations</span>
+                        <span>Temporal: ${(data.temporal * 100).toFixed(0)}%</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Filter and sort LITs
+        function getFilteredAndSortedLITs() {
+            let lits = litComposer.getAllLITs();
+
+            // Apply type filter
+            if (currentFilterType !== 'all') {
+                lits = lits.filter(lit => lit.type === currentFilterType);
+            }
+
+            // Apply state filter
+            if (currentFilterState !== 'all') {
+                lits = lits.filter(lit => lit.state === currentFilterState);
+            }
+
+            // Apply sort
+            switch(currentSort) {
+                case 'value-desc':
+                    lits.sort((a, b) => b.calculateValue() - a.calculateValue());
+                    break;
+                case 'value-asc':
+                    lits.sort((a, b) => a.calculateValue() - b.calculateValue());
+                    break;
+                case 'coherence-desc':
+                    lits.sort((a, b) => b.coherenceField.coherenceScore - a.coherenceField.coherenceScore);
+                    break;
+                case 'agency-desc':
+                    lits.sort((a, b) => b.agentSystem.agencyScore - a.agentSystem.agencyScore);
+                    break;
+                case 'recent':
+                    lits.sort((a, b) => b.temporalSignature.createdAt - a.temporalSignature.createdAt);
+                    break;
+            }
+
+            return lits;
+        }
+
+        // Update LITs grid display
+        function updateLITsRegistry() {
+            const lits = getFilteredAndSortedLITs();
+            const grid = document.getElementById('lits-grid');
+
+            if (lits.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16">
+                        <p class="text-slate-500 text-lg">No LITs match your filters.</p>
+                        <p class="text-slate-600 text-sm mt-2">Try adjusting your filter settings or compose new LITs.</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = lits.map(lit => createRegistryLITCard(lit)).join('');
+            }
+
+            // Update stats
+            const allLITs = litComposer.getAllLITs();
+            document.getElementById('total-lits-count').textContent = allLITs.length;
+
+            if (allLITs.length > 0) {
+                const avgValue = allLITs.reduce((sum, lit) => sum + lit.calculateValue(), 0) / allLITs.length;
+                document.getElementById('avg-lit-value').textContent = (avgValue * 100).toFixed(0) + '%';
+            }
+
+            const networkCoherence = litComposer.measureNetworkCoherence();
+            document.getElementById('network-coherence-display').textContent = (networkCoherence * 100).toFixed(0) + '%';
+        }
+
+        // Show LIT detail modal
+        window.showLITDetail = function(litId) {
+            const lit = litComposer.find(litId);
+            if (!lit) return;
+
+            const data = lit.toJSON();
+            const modal = document.getElementById('lit-detail-modal');
+            const content = document.getElementById('lit-detail-content');
+            document.getElementById('modal-lit-id').textContent = data.id;
+
+            // Build relationships info
+            const relatedLITs = data.relations.map(rel => {
+                const relatedLIT = litComposer.find(rel.targetId);
+                return relatedLIT ? {
+                    id: rel.targetId,
+                    type: rel.type,
+                    litType: relatedLIT.type,
+                    value: relatedLIT.calculateValue()
+                } : null;
+            }).filter(r => r !== null);
+
+            // Check if this LIT was created via fusion
+            const fusionHistory = fusionEngine.getFusionHistory();
+            const fusionRecord = fusionHistory.find(f => f.resultID === data.id);
+            const isFusionProduct = fusionRecord !== null;
+
+            // Check if this LIT has been fused into other LITs
+            const fusedInto = fusionHistory.filter(f => f.sourceIDs.includes(data.id));
+
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <!-- Type and State Badge -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-medium">${data.type}</span>
+                        <span class="px-4 py-2 ${getStateColor(data.state)} bg-slate-800 rounded-lg text-sm font-medium">${data.state}</span>
+                        ${isFusionProduct ? '<span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg text-sm font-medium">✧ Fusion Product</span>' : ''}
+                    </div>
+
+                    <!-- Core Metrics -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Coherence</div>
+                            <div class="text-2xl font-bold text-white">${(data.coherence * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Agency</div>
+                            <div class="text-2xl font-bold text-white">${(data.agency * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                            <div class="text-xs text-slate-400 mb-1">Temporal</div>
+                            <div class="text-2xl font-bold text-white">${(data.temporal * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 text-center border-2 border-blue-500/30">
+                            <div class="text-xs text-slate-400 mb-1">Total Value</div>
+                            <div class="text-2xl font-bold text-blue-400">${(data.value * 100).toFixed(1)}%</div>
+                        </div>
+                    </div>
+
+                    ${isFusionProduct ? `
+                    <!-- Fusion Origin -->
+                    <div class="border border-purple-500/30 rounded-lg p-4 bg-purple-500/5">
+                        <h4 class="font-grotesk text-lg font-semibold text-white mb-3">✧ Fusion Origin</h4>
+                        <div class="text-sm text-slate-400 mb-2">
+                            Pattern: <span class="text-purple-400 font-medium">${fusionRecord.pattern}</span>
+                        </div>
+                        <div class="text-sm text-slate-400 mb-3">
+                            Created from ${fusionRecord.sourceIDs.length} source LITs
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+                            <div class="bg-slate-800/50 rounded p-2 text-center">
+                                <div class="text-xs text-slate-400">Novelty</div>
+                                <div class="text-sm font-bold text-purple-400">${(fusionRecord.emergence.novelty * 100).toFixed(0)}%</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded p-2 text-center">
+                                <div class="text-xs text-slate-400">Synergy</div>
+                                <div class="text-sm font-bold text-green-400">${(fusionRecord.emergence.synergy * 100).toFixed(0)}%</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded p-2 text-center">
+                                <div class="text-xs text-slate-400">Stability</div>
+                                <div class="text-sm font-bold text-blue-400">${(fusionRecord.emergence.stability * 100).toFixed(0)}%</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded p-2 text-center">
+                                <div class="text-xs text-slate-400">Resonance</div>
+                                <div class="text-sm font-bold text-yellow-400">${(fusionRecord.emergence.resonance * 100).toFixed(0)}%</div>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-500">
+                            Source LITs: ${fusionRecord.sourceIDs.map(id => `<span class="bg-slate-800 px-2 py-1 rounded mr-1">${id}</span>`).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Content -->
+                    <div class="border border-slate-700 rounded-lg p-4">
+                        <h4 class="font-grotesk text-lg font-semibold text-white mb-3">Content</h4>
+                        <pre class="text-sm text-slate-300 whitespace-pre-wrap font-mono bg-slate-900/50 p-3 rounded">${JSON.stringify(data.content, null, 2)}</pre>
+                    </div>
+
+                    <!-- Metadata -->
+                    <div class="border border-slate-700 rounded-lg p-4">
+                        <h4 class="font-grotesk text-lg font-semibold text-white mb-3">Metadata</h4>
+                        <div class="grid grid-cols-2 gap-3 text-sm">
+                            <div>
+                                <span class="text-slate-400">Domain:</span>
+                                <span class="text-white ml-2">${data.metadata.domain || 'N/A'}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400">Created:</span>
+                                <span class="text-white ml-2">${new Date(data.metadata.created).toLocaleString()}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400">Version:</span>
+                                <span class="text-white ml-2">${data.version}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400">Relations:</span>
+                                <span class="text-white ml-2">${data.relations.length}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${relatedLITs.length > 0 ? `
+                    <!-- Relations Network -->
+                    <div class="border border-slate-700 rounded-lg p-4">
+                        <h4 class="font-grotesk text-lg font-semibold text-white mb-3">Relation Network</h4>
+                        <div class="space-y-2">
+                            ${relatedLITs.map(rel => `
+                                <div class="flex justify-between items-center bg-slate-800/30 rounded p-3 hover:bg-slate-800/50 transition cursor-pointer"
+                                     onclick="showLITDetail('${rel.id}')">
+                                    <div>
+                                        <div class="text-white text-sm font-medium">${rel.id}</div>
+                                        <div class="text-slate-500 text-xs">${rel.type} → ${rel.litType}</div>
+                                    </div>
+                                    <div class="text-blue-400 text-sm font-bold">${(rel.value * 100).toFixed(0)}%</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    ${fusedInto.length > 0 ? `
+                    <!-- Fusion Lineage -->
+                    <div class="border border-blue-500/30 rounded-lg p-4 bg-blue-500/5">
+                        <h4 class="font-grotesk text-lg font-semibold text-white mb-3">Fusion Lineage</h4>
+                        <p class="text-sm text-slate-400 mb-3">This LIT has been fused into ${fusedInto.length} other LIT${fusedInto.length > 1 ? 's' : ''}:</p>
+                        <div class="space-y-2">
+                            ${fusedInto.map(fusion => `
+                                <div class="bg-slate-800/30 rounded p-3">
+                                    <div class="flex justify-between items-center">
+                                        <div class="text-white text-sm font-medium cursor-pointer hover:text-blue-400"
+                                             onclick="showLITDetail('${fusion.resultID}')">${fusion.resultID}</div>
+                                        <div class="text-slate-500 text-xs">${fusion.pattern}</div>
+                                    </div>
+                                    <div class="text-xs text-slate-500 mt-1">
+                                        ${new Date(fusion.timestamp).toLocaleString()}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Actions -->
+                    <div class="flex gap-3">
+                        <button onclick="closeLITDetail()" class="btn-secondary px-6 py-2 rounded-lg font-medium flex-1">
+                            Close
+                        </button>
+                        <button onclick="selectForFusion('${data.id}')" class="btn-primary px-6 py-2 rounded-lg font-medium flex-1">
+                            Select for Fusion
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        };
+
+        // Close LIT detail modal
+        window.closeLITDetail = function(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('lit-detail-modal').classList.add('hidden');
+        };
+
+        // Select LIT for fusion from detail view
+        window.selectForFusion = function(litId) {
+            selectedLITsForFusion.add(litId);
+            closeLITDetail();
+            updateFusionSelector();
+            // Scroll to fusion section
+            document.getElementById('xenial-fusion').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // Event listeners for filters
+        document.getElementById('lit-filter-type').addEventListener('change', function(e) {
+            currentFilterType = e.target.value;
+            updateLITsRegistry();
+        });
+
+        document.getElementById('lit-filter-state').addEventListener('change', function(e) {
+            currentFilterState = e.target.value;
+            updateLITsRegistry();
+        });
+
+        document.getElementById('lit-sort').addEventListener('change', function(e) {
+            currentSort = e.target.value;
+            updateLITsRegistry();
+        });
+
+        // Initialize registry on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateLITsRegistry();
+            }, 1500);
+        });
+
+        // Update registry periodically
+        setInterval(() => {
+            updateLITsRegistry();
+        }, 10000);
     </script>
 </body>
 </html>
