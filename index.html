@@ -71,9 +71,9 @@
                     <h1 class="font-grotesk text-2xl font-bold text-white">xen.fun</h1>
                 </div>
                 <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#lit-composer" class="text-slate-300 hover:text-white transition">Compose LIT</a>
                     <a href="#projects" class="text-slate-300 hover:text-white transition">Explore</a>
                     <a href="#how-it-works" class="text-slate-300 hover:text-white transition">How It Works</a>
-                    <a href="#" class="text-slate-300 hover:text-white transition">Become a Creator</a>
                 </nav>
                 <button class="btn-secondary px-4 py-2 rounded-lg font-medium">Connect Wallet</button>
             </div>
@@ -161,6 +161,59 @@
             </div>
         </section>
 
+        <!-- Live LIT Composer Section -->
+        <section id="lit-composer" class="py-20 bg-black/30">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-grotesk text-4xl md:text-5xl font-bold text-white">Live LIT Composition</h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">Witness the creation of Luminous Information Tokens in real-time. Each LIT is a packet of coherent, agential information.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- LIT Composer Interface -->
+                    <div class="glass-card p-8 mb-8">
+                        <h3 class="font-grotesk text-2xl font-semibold text-white mb-6">Compose a New LIT</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">LIT Type</label>
+                                <select id="lit-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white">
+                                    <option value="knowledge">Knowledge LIT</option>
+                                    <option value="process">Process LIT</option>
+                                    <option value="creative">Creative LIT</option>
+                                    <option value="prediction">Prediction LIT</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">Topic/Name</label>
+                                <input id="lit-name" type="text" placeholder="Enter LIT name" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white">
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-sm text-slate-400 mb-2">Content</label>
+                            <textarea id="lit-content" rows="4" placeholder="Enter the meaning this LIT will carry..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white"></textarea>
+                        </div>
+
+                        <button id="compose-btn" class="btn-primary px-8 py-3 rounded-lg font-bold w-full">Compose LIT</button>
+                    </div>
+
+                    <!-- Active LITs Display -->
+                    <div class="glass-card p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-grotesk text-2xl font-semibold text-white">Active LITs in Network</h3>
+                            <div class="text-sm text-slate-400">
+                                Network Coherence: <span id="network-coherence" class="text-blue-400 font-bold">0.000</span>
+                            </div>
+                        </div>
+                        <div id="active-lits" class="space-y-4">
+                            <!-- LIT cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Featured Projects Section -->
         <section id="projects" class="py-20">
             <div class="container mx-auto px-4">
@@ -181,6 +234,10 @@
             </div>
         </footer>
     </div>
+
+    <!-- Include LIT Framework -->
+    <script src="lit-framework.js"></script>
+    <script src="lit-examples.js"></script>
 
     <script>
         // Mock data for projects
@@ -246,6 +303,235 @@
         const projectList = document.getElementById('project-list');
         projects.forEach(project => {
             projectList.innerHTML += createProjectCard(project);
+        });
+
+        // ===== LIT COMPOSER FUNCTIONALITY =====
+
+        // Initialize the global composer (from lit-framework.js)
+        const litComposer = new LITComposer();
+
+        // Function to get state color
+        function getStateColor(state) {
+            const colors = {
+                'nascent': 'text-yellow-400',
+                'stable': 'text-green-400',
+                'resonant': 'text-blue-400',
+                'transcendent': 'text-purple-400',
+                'decaying': 'text-red-400'
+            };
+            return colors[state] || 'text-slate-400';
+        }
+
+        // Function to create LIT card display
+        function createLITCard(lit) {
+            const data = lit.toJSON();
+            return `
+                <div class="border border-slate-700 rounded-lg p-4 hover:border-blue-500 transition-all" data-lit-id="${data.id}">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-grotesk text-lg font-semibold text-white">${data.id}</h4>
+                            <p class="text-xs text-slate-500">${data.type}</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium ${getStateColor(data.state)} bg-slate-800">
+                            ${data.state}
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 mb-3 text-center">
+                        <div class="bg-slate-800/50 rounded p-2">
+                            <div class="text-xs text-slate-400">Coherence</div>
+                            <div class="font-bold text-white">${(data.coherence * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded p-2">
+                            <div class="text-xs text-slate-400">Agency</div>
+                            <div class="font-bold text-white">${(data.agency * 100).toFixed(1)}%</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded p-2">
+                            <div class="text-xs text-slate-400">Value</div>
+                            <div class="font-bold text-blue-400">${(data.value * 100).toFixed(1)}%</div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-slate-400 mb-3">
+                        ${JSON.stringify(data.content).substring(0, 100)}${JSON.stringify(data.content).length > 100 ? '...' : ''}
+                    </div>
+
+                    <div class="flex justify-between items-center text-xs text-slate-500">
+                        <span>${data.relations.length} relations</span>
+                        <span>Temporal: ${(data.temporal * 100).toFixed(1)}%</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to update active LITs display
+        function updateActiveLITs() {
+            const container = document.getElementById('active-lits');
+            const allLITs = litComposer.getAllLITs();
+
+            if (allLITs.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-center py-8">No active LITs. Compose your first LIT above!</p>';
+            } else {
+                container.innerHTML = allLITs.map(lit => createLITCard(lit)).join('');
+            }
+
+            // Update network coherence
+            const coherence = litComposer.measureNetworkCoherence();
+            document.getElementById('network-coherence').textContent = coherence.toFixed(3);
+        }
+
+        // Compose button handler
+        document.getElementById('compose-btn').addEventListener('click', function() {
+            const type = document.getElementById('lit-type').value;
+            const name = document.getElementById('lit-name').value;
+            const contentText = document.getElementById('lit-content').value;
+
+            if (!name || !contentText) {
+                alert('Please fill in both name and content fields');
+                return;
+            }
+
+            let newLIT;
+
+            switch(type) {
+                case 'knowledge':
+                    newLIT = litComposer.compose({
+                        type: 'knowledge',
+                        content: {
+                            topic: name,
+                            knowledge: contentText,
+                            id: `knowledge-${name.toLowerCase().replace(/\s+/g, '-')}`,
+                            persistent: true,
+                            value: 1.0,
+                            metadata: { confidence: 0.8 }
+                        },
+                        metadata: {
+                            domain: 'epistemology',
+                            created: new Date().toISOString()
+                        },
+                        capabilities: [{
+                            name: 'query',
+                            handler: (ctx) => ({ response: contentText.substring(0, 100) })
+                        }]
+                    });
+                    break;
+
+                case 'process':
+                    const steps = contentText.split('\n').filter(s => s.trim());
+                    newLIT = litComposer.compose({
+                        type: 'process',
+                        content: {
+                            name: name,
+                            steps: steps,
+                            currentStep: 0,
+                            id: `process-${name.toLowerCase().replace(/\s+/g, '-')}`,
+                            persistent: true
+                        },
+                        metadata: {
+                            domain: 'procedural',
+                            created: new Date().toISOString()
+                        }
+                    });
+                    break;
+
+                case 'creative':
+                    newLIT = litComposer.compose({
+                        type: 'creative',
+                        content: {
+                            medium: name,
+                            description: contentText,
+                            outputs: [],
+                            id: `creative-${name.toLowerCase().replace(/\s+/g, '-')}`,
+                            persistent: true,
+                            value: 0
+                        },
+                        metadata: {
+                            domain: 'generative',
+                            created: new Date().toISOString()
+                        }
+                    });
+                    break;
+
+                case 'prediction':
+                    newLIT = litComposer.compose({
+                        type: 'prediction',
+                        content: {
+                            domain: name,
+                            model: contentText,
+                            predictions: [],
+                            id: `prediction-${name.toLowerCase().replace(/\s+/g, '-')}`,
+                            persistent: true,
+                            relations: [],
+                            metadata: { totalPredictions: 0, correctPredictions: 0 }
+                        },
+                        metadata: {
+                            domain: 'forecasting',
+                            created: new Date().toISOString()
+                        }
+                    });
+                    break;
+            }
+
+            // Simulate an interaction to boost initial values
+            newLIT.interact('creation', { impact: 0.5 });
+
+            // Clear form
+            document.getElementById('lit-name').value = '';
+            document.getElementById('lit-content').value = '';
+
+            // Update display
+            updateActiveLITs();
+
+            // Show success feedback
+            const btn = this;
+            const originalText = btn.textContent;
+            btn.textContent = 'LIT Composed!';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        });
+
+        // Initialize with demo LITs
+        function initializeDemoLITs() {
+            // Create a demo knowledge LIT
+            const demoKnowledge = litComposer.compose({
+                type: 'knowledge',
+                content: {
+                    topic: 'LIT Architecture',
+                    knowledge: 'A LIT is composed of three fundamental pillars: Coherence (structural integrity), Agency (autonomous capability), and Temporal Signature (persistence through time). These create emergent value in the XQE.',
+                    id: 'knowledge-lit-architecture',
+                    persistent: true,
+                    value: 1.0,
+                    metadata: { confidence: 0.95 }
+                },
+                metadata: {
+                    domain: 'epistemology',
+                    created: new Date().toISOString(),
+                    creator: 'xen.fun'
+                }
+            });
+
+            // Simulate some interactions
+            demoKnowledge.interact('query', { impact: 0.3 });
+            demoKnowledge.interact('reference', { impact: 0.2 });
+
+            updateActiveLITs();
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeDemoLITs();
+
+            // Simulate temporal decay and updates every 5 seconds
+            setInterval(() => {
+                litComposer.getAllLITs().forEach(lit => {
+                    lit.temporalSignature.updatePersistence();
+                    lit.updateState();
+                });
+                updateActiveLITs();
+            }, 5000);
         });
     </script>
 </body>
